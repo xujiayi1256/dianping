@@ -5,7 +5,7 @@ Page({
     restaurant: {},
     reviews: [],
     ratingValues: [1, 2, 3, 4, 5],
-    rating: 5,
+    reviewRating: 5,
     content: '',
     state: 'meals'
   },
@@ -75,8 +75,9 @@ Page({
     let query = new wx.BaaS.Query
     query.compare('restaurant_id', '=', this.data.restaurantID)
     Review.setQuery(query).expand(['user_id']).find().then(res => {
+      console.log(res)
       let reviews = res.data.objects
-      let count = res.data.meta.total_count //Count is given by the request
+      let count = res.data.objects.length //Count is given by the request
       this.setData({
         reviews: reviews
       })
@@ -155,7 +156,7 @@ Page({
     let index = event.detail.value
     let rating = this.data.ratingValues[index]
     this.setData({
-      rating: rating
+      reviewRating: rating
     })
   },
 
@@ -209,7 +210,7 @@ Page({
 
   createReview: function (event) {
     let content = this.data.content
-    let rating = this.data.rating
+    let rating = this.data.reviewRating
     let Review = new wx.BaaS.TableObject('reviews')
     let review = Review.create()
     review.set({
@@ -223,7 +224,7 @@ Page({
       this.fetchReviews()
       this.setData({
         content: '',
-        rating: 5
+        reviewRating: 5
       })
     })
   }

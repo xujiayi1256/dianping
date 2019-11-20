@@ -48,7 +48,7 @@
     <view class="section">
       <view>添加评论</view>
       <input name="content" placeholder="请输入评论内容" class="footer" value="{{ content }}" bindchange="onChangeContent"></input>
-      <picker mode="selector" range="{{ratingValues}}" bindchange="onChangeRating">评分：{{rating}}</picker>
+      <picker mode="selector" range="{{ratingValues}}" bindchange="onChangeRating">评分：{{reviewRating}}</picker>
     </view>
     <button formType="submit" class="footer-btn">提交</button>
   </form>
