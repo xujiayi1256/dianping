@@ -1,0 +1,63 @@
+<!--pages/login/login.wxml-->
+<block wx:if="{{currentUser}}">
+  <view class="profile">
+    <image class="avatar" src="{{currentUser.avatar}}" mode="aspectFit"></image>
+    <view class="h2">欢迎回来，{{currentUser._username || currentUser.nickname}}</view>
+    <view>当前积分：{{currentUser._attribute.points}}</view>
+    <form bindsubmit="bindEditProfile">
+      <!-- <view class="section">
+        <view class="section__title">Photo</view>
+        <input name="avatar" value="{{currentUser.avatar}}" placeholder="please add your photo url"></input>
+      </view>
+      <view class="btn-area">
+        <button formType="submit">Submit</button>
+      </view> -->
+    </form>
+    <view class="btn-area" id="logout">
+      <button bindtap="bindLogout">Log Out</button>
+    </view>
+    <!-- <navigator url="/pages/orders/orders">查看我的订单</navigator> -->
+  </view>
+</block>
+
+
+
+<block wx:else>
+  <view wx:if="{{state == 'register'}}">
+    <view>请注册</view>
+    <form bindsubmit="onRegister">
+      <view class="section">
+        <view class="section__title">用户名</view>
+        <input name="username" placeholder="请输入用户名"></input>
+      </view>
+      <view class="section">
+        <view class="section__title">密码</view>
+        <input name="password" type="password" placeholder="请输入密码"></input>
+      </view>
+      <view class="btn-area">
+        <button formType="submit">注册</button>
+        <button bindtap="changeState">去登录</button>
+      </view>
+    </form>
+  </view>
+  <view wx:if="{{state == 'login'}}">
+    <view>请登录</view>
+    <form bindsubmit="bindLogin">
+      <view class="section">
+        <view class="section__title">用户名</view>
+        <input name="username" placeholder="请输入用户名"></input>
+      </view>
+
+      <view class="section">
+        <view class="section__title">密码</view>
+        <input name="password" type="password" placeholder="请输入密码"></input>
+      </view>
+      <view class="btn-area">
+        <button formType="submit">登录</button>
+        <button bindtap="changeState">去注册</button>
+      </view>
+    </form>
+  </view>
+
+  <button id="wechatLogin" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">微信登录</button>
+</block>

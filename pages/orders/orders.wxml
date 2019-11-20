@@ -1,0 +1,10 @@
+<!--pages/orders/orders.wxml-->
+<view wx:for="{{orders}}" wx:for-item="order">
+  <view class="order">
+    <image src="{{order.meal.photo.path}}" mode="aspectFit"></image>
+    <view>{{order.meal.name}}</view>
+    <view wx:if="{{order.meal.price>0}}">价格：￥{{order.meal.price}}</view>
+    <view wx:else>使用{{-order.meal.points}}兑换</view>
+    <view>用户：{{order.user_id._username || order.user_id.nickname}}</view>
+  </view>
+</view>

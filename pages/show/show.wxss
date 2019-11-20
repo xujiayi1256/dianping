@@ -1,0 +1,105 @@
+/* pages/show/show.wxss */
+.content {
+  padding: 10px;
+}
+
+.card-product {
+  overflow: hidden;
+  height: 200px;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.p {
+  font-size: 20px;
+  line-height: 1.4;
+  opacity: 0.7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product-infos {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-review {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-review-user {
+  flex: 0 0 100px;
+}
+
+.card-review-user .avatar {
+  width:100px;
+  height:100px;
+  border-radius:50%;
+}
+
+.card-review-infos {
+  padding: 15px;
+  flex: 1;
+}
+
+.section {
+  background-color: white;
+  margin: 20px 0px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.ratings, .review-content, .review-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 7px 1px;
+}
+
+.review-content .x {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.review-content .h2 {
+  font-size: 25px;
+}
+
+.review-content .p {
+  font-size: 17px;
+}
+
+/* .footer {
+  position: absolute;
+  bottom: 10rpx;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 70%;
+  height: 30px;
+} */
+
+/* .footer-btn {
+  position: absolute;
+  bottom: 10rpx;
+  right: 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: -1px;
+  height: 33px;
+  margin: 0px;
+} */

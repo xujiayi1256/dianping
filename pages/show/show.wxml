@@ -1,0 +1,77 @@
+<!--pages/show/show.wxml-->
+<view class="card-product" style="background-image: url('{{restaurant.photo.path}}'); background-size: cover;" />
+<view class="card-product-infos">
+  <view class="restaurant-info">
+    <!-- <image src="{{restaurant.photo.path}}" mode="aspectFit"></image> -->
+    <view class="h2">{{restaurant.name}}</view>
+    <view class="p">{{restaurant.description}}</view>
+  </view>
+  <view class="ratings">
+    <view class="rating" wx:for="{{rating}}" wx:for-item="rating"> ❤️ </view>
+    <view class="rating" wx:for="{{5 - rating}}" wx:for-item="rating"> 🖤 </view>
+  </view>
+</view>
+
+<view wx:if="{{state == 'reviews'}}">
+  <button bindtap="changeState">看菜单</button>
+  <view>餐厅评论：</view>
+  <block wx:for="{{reviews}}" wx:for-item="review">
+    <view class="card-review">
+      <view class="card-review-user">
+        <image class="avatar" src="{{review.user_id.avatar}}"/>
+      </view>
+
+      <view class="card-review-infos">
+        <view class="review-content">
+          <view class="h2">{{review.content}}</view>
+          <view class="x" data-id="{{review.id}}" bindtap="deleteReview"> x </view>
+        </view>
+
+        <view class="review-info">
+          <view class="p"> {{review.user_id._username||review.user_id.nickname}} </view>
+          <!-- <view class="p">评分：{{review.rating}}</view> -->
+          <view class="ratings">
+            <view class="rating" data-id="{{review.id}}" data-rating="{{rating + 1}}" bindtap="rateReview" wx:for="{{review.rating}}" wx:for-item="rating">
+            ❤️
+            </view>
+
+            <view class="rating" data-id="{{review.id}}" data-rating="{{review.rating + rating + 1}}" bindtap="rateReview" wx:for="{{5 - review.rating}}" wx:for-item="rating">
+            🖤
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <form bindsubmit="createReview" wx:if="{{currentUser}}">
+    <view class="section">
+      <view>添加评论</view>
+      <input name="content" placeholder="请输入评论内容" class="footer" value="{{ content }}" bindchange="onChangeContent"></input>
+      <picker mode="selector" range="{{ratingValues}}" bindchange="onChangeRating">评分：{{rating}}</picker>
+    </view>
+    <button formType="submit" class="footer-btn">提交</button>
+  </form>
+  <button bindtap="showUserPage" class="section" wx:else>请登录为餐厅点评</button>
+</view>
+
+<view wx:if="{{state == 'meals'}}">
+  <button bindtap="changeState">看点评</button>
+  <view>餐厅菜品：</view>
+  <block wx:for="{{meals}}" wx:for-item="meal">
+    <image src="{{meal.photo.path}}" mode="aspectFit"></image>
+    <view class="card-product-infos" wx:if="{{meal.price>0}}">
+      <view class="rest-name">{{meal.name}}</view>
+      <view class="rest-desc">价格：￥{{meal.price}}</view>
+      <view>购买可得积分：{{meal.points}}</view>
+    </view>
+    <view class="card-product-infos" wx:else>
+      <view class="rest-name">{{meal.name}}</view>
+      <view>{{-meal.points}} 积分兑换</view>
+    </view>
+    <button bindtap="onSubmitOrder" data-id="{{meal.id}}" data-points="{{meal.points}}">
+      <text wx:if="{{meal.price>0}}">购买</text>
+      <text wx:else>兑换</text>
+    </button>
+  </block>
+</view>

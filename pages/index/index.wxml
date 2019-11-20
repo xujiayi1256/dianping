@@ -1,0 +1,30 @@
+<!--pages/index/index.wxml-->
+<block wx:for="{{restaurants}}" wx:for-item="restaurant">
+  <view class="card-product" style="background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.9)), url('{{restaurant.photo.path}}'); background-size: cover;">
+    <view class="card-product-infos" data-id="{{restaurant.id}}" bindtap="showRestaurant">
+      <view class="h2">{{restaurant.name}}</view>
+      <view class="p">{{restaurant.description}}</view>
+    </view>
+  </view>
+</block>
+
+<!-- <form bindsubmit="bindSubmit">
+  <view class="section">
+    <view class="section__title">Your restaurant</view>
+    <input name="name" value="{{restaurant.name}}" placeholder="please write your restaurant name" ></input>
+  </view>
+
+  <view class="section">
+    <view class="section__title">Description</view>
+    <textarea name="description" value="{{restaurant.description}}" placeholder="please write your restaurant description" ></textarea>
+  </view>
+
+  <view class="section">
+    <view class="section__title">Photo</view>
+    <input name="photo" value="{{restaurant.photo}}" placeholder="please add your restaurant photo" ></input>
+  </view>
+
+  <view class="btn-area">
+    <button formType="submit">Submit</button>
+  </view>
+</form> -->
