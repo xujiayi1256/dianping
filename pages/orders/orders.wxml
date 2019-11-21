@@ -5,6 +5,6 @@
     <view>{{order.meal.name}}</view>
     <view wx:if="{{order.meal.price>0}}">价格：￥{{order.meal.price}}</view>
     <view wx:else>使用{{-order.meal.points}}兑换</view>
-    <view>用户：{{order.user_id._username || order.user_id.nickname}}</view>
+    <view wx:if="{{(order.user_id._username || order.user_id.nickname)!=(currentUser._username||currentUser.nickname)}}">用户：{{order.user_id._username || order.user_id.nickname}}</view>
   </view>
 </view>

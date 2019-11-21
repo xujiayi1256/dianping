@@ -20,6 +20,17 @@ Page({
       })
       console.log(this.data.orders)
     })
+    wx.BaaS.auth.getCurrentUser().then(user => {
+      console.log(user) // user 为 currentUser 对象
+      this.setData({
+        currentUser: user
+      })
+    }).catch(err => {
+      if (err.code === 604) {
+        console.log('用户未登录')
+        
+      }
+    })
   },
 
   /**

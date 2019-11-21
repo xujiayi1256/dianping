@@ -5,13 +5,18 @@
     "pages/user/user",
     "pages/show/show",
     "pages/login/login",
-    "pages/orders/orders"
+    "pages/orders/orders",
+    "pages/products/products"
   ],
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "Home"
+      },
+      {
+        "pagePath": "pages/products/products",
+        "text": "Products"
       },
       {
         "pagePath": "pages/orders/orders",

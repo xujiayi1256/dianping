@@ -1,0 +1,50 @@
+/* pages/products/products.wxss */
+
+/* page {
+  background-color: black;
+} */
+
+.card-product {
+  overflow: hidden;
+  height: 130px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  /* display: flex; */
+  align-items: center;
+}
+
+.card-product .h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product .p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.actions {
+  display: flex;
+}
+
+.quantity {
+  display: block;
+  padding: 0 20px;
+}
+
+.summary {
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+background:#f0f0f0;
+padding:20px 15px;
+}
