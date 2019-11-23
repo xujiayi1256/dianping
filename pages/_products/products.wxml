@@ -1,15 +1,16 @@
 <!--pages/products/products.wxml-->
 <block wx:for="{{products}}" wx:for-item="item">
   <view class="card-product" style="background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.9)), url('{{item.photo.path}}'); background-size: cover;">
-    <view class="card-product-infos">
+    <!-- <view class="card-product-infos" data-id="{{restaurant.id}}" bindtap="showRestaurant"> -->
+    <view class="card-product-infos" data-id="{{item.id}}">
       <view class="h2">{{item.name}}</view>
       <view class="p">{{item.description}}</view>
       <view class="p">￥{{item.price}}</view>
-
+      
       <view class="actions">
-        <button data-id="{{item.id}}" bindtap="onMinus">-</button>
-        <view>{{item.quantity||0}}</view>
-        <button data-id="{{item.id}}" bindtap="onAdd">+</button>
+      <button data-id="{{item.id}}" bindtap="onAdd">+</button>
+      <view class="quantity">{{item.quantity || 0}}</view>
+      <button data-id="{{item.id}}" bindtap="onMinus">-</button>
       </view>
     </view>
   </view>

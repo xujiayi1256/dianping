@@ -1,4 +1,9 @@
 /* pages/products/products.wxss */
+
+/* page {
+  background-color: black;
+} */
+
 .card-product {
   overflow: hidden;
   height: 130px;
